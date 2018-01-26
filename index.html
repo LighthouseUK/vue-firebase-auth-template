@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>VueJS Firebase Skeleton</title>
+  </head>
+  <body>
+    <div id="app">
+      <noscript>
+        <h1>Hi there!</h1>
+        <p>
+          This entire site runs on VueJS, so you'll need to enable JavaScript in order to browse it.
+        </p>
+        <p>
+          We don't use advert or analytics services to help protect your
+          privacy.
+        </p>
+      </noscript>
+      <style>
+        body {
+          /*background: #DB7769;*/
+          background: #f7f7f7;
+        }
+        #loaderMessage {
+          position: absolute;
+          top: calc(50% - -6px);
+          left: calc(50% - 43px);
+          font-size: 1.5em;
+          color: #DB7769;
+        }
+        #loader {
+          animation: loader 5s cubic-bezier(.8,0,.2,1) infinite;
+          height: 40px;
+          width: 41px;
+          position: absolute;
+          top:calc(50% - 20px);
+          left:calc(50% - 20px);
+        }
+        @keyframes loader {
+          90% { transform: rotate(0deg); }
+          100% { transform: rotate(180deg); }
+        }
+        #top {
+          animation: top 5s linear infinite;
+          border-top: 20px solid #DB7769;
+          border-right: 20px solid transparent;
+          border-left: 20px solid transparent;
+          height: 0px;
+          width: 1px;
+          transform-origin: 50% 100%;
+        }
+        @keyframes top {
+          90% { transform: scale(0); }
+          100% { transform: scale(0);}
+        }
+        #bottom {
+          animation: bottom 5s linear infinite;
+          border-right: 20px solid transparent;
+          border-bottom: 20px solid #DB7769;
+          border-left: 20px solid transparent;
+          height: 0px;
+          width: 1px;
+          transform: scale(0);
+          transform-origin: 50% 100%;
+        }
+        @keyframes bottom {
+          10% { transform: scale(0); }
+          90% { transform: scale(1); }
+          100% { transform: scale(1); }
+        }
+        #line {
+          animation: line 5s linear infinite;
+          border-left: 1px dotted #DB7769;
+          height: 0px;
+          width: 0px;
+          position: absolute;
+          top: 20px;
+          left: 20px;
+        }
+        @keyframes line {
+          10% { height: 20px; }
+          100% { height: 20px; }
+        }
+      </style>
+      <div id="loader">
+        <div id="top"></div>
+        <div id="bottom"></div>
+        <div id="line"></div>
+      </div>
+      <p id="loaderMessage">Loading...</p>
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

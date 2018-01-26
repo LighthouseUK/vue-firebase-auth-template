@@ -1,0 +1,44 @@
+{
+  "rules": {
+    "v0": {
+      "admins": {
+        "$user_uid": {
+        }
+      },
+      "systemConfig": {
+        ".read": true
+      },
+      "moduleConfig": {
+        "core": {
+          ".read": true
+        },
+        "admin": {
+          ".read": "root.child('v0/admins/').hasChild(auth.uid)"
+        }
+      },
+      "commands": {
+        ".read": false,
+        "$user_uid": {
+          "$command_uid": {
+            ".write": "$user_uid === auth.uid && !data.exists() && newData.exists()",
+            ".validate": "newData.hasChildren(['commandName', 'commandArgs'])",
+            "commandName": {
+              ".validate":  "newData.exists() && ((newData.val().beginsWith('user.')) || ((newData.val().beginsWith('admin.')) && (root.child('v0/admins/').hasChild(auth.uid)) ) )"
+            },
+            "commandArgs": {
+            },
+            "clientResponse": {
+              ".read": "$user_uid === auth.uid"
+            }
+          }
+        }
+      },
+      "users": {
+        "$user_id": {
+          ".read": "$user_id === auth.uid || root.child('v0/admins/').hasChild(auth.uid)"
+        }
+      }
+    }
+  }
+}
+
